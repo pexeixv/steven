@@ -68,11 +68,8 @@ export function Footer() {
               </a>
             </div>
             <p className="text-sm text-gray-400 mt-4">
-              <a
-                href="mailto:contact@stevenpereira.com"
-                className="hover:text-sky-400 transition-colors"
-              >
-                contact@stevenpereira.com
+              <a href="mailto:steven@email.com" className="hover:text-sky-400 transition-colors">
+                steven@email.com
               </a>
             </p>
           </div>

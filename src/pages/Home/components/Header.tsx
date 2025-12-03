@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react'
 import { Menu } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import Logo from '@/assets/logo.svg?react'
 
 const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'Music', href: '#music' },
   { label: 'Skillset', href: '#skillset' },
   { label: 'Experience', href: '#experience' },
-  { label: 'Work with me', href: '#work-with-me' },
 ]
 
 export function Header() {
@@ -32,11 +32,9 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           <div className="flex flex-col">
             <a href="#home" className="text-xl font-bold tracking-wide text-white">
-              Steven Pereira
+              <Logo className="w-8 h-8 inline-block mr-2 mb-1" />
+              <span> Steven Pereira</span>
             </a>
-            <span className="text-xs text-gray-400 tracking-wider">
-              Producer · Engineer · From Goa
-            </span>
           </div>
 
           <nav className="hidden lg:flex items-center gap-8">

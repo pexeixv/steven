@@ -1,13 +1,15 @@
 import { Routes, Route } from 'react-router-dom'
 import Home from '@/pages/Home'
-import NotFound from '@/pages/NotFound'
+import TwSizeIndicator from './components/TwSizeIndicator'
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <>
+      <TwSizeIndicator />
+      <Routes>
+        <Route path="*" element={<Home />} />
+      </Routes>
+    </>
   )
 }
 

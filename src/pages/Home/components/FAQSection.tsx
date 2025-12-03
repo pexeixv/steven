@@ -72,16 +72,6 @@ export function FAQSection() {
                   </AccordionTrigger>
                   <AccordionContent className="text-gray-400 pb-6 leading-relaxed">
                     {faq.answer}
-                    <div className="mt-4 pt-4 border-t border-sky-500/10">
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="border-sky-500/50 text-sky-400 hover:bg-sky-500/10 rounded-full"
-                        asChild
-                      >
-                        <a href="#work-with-me">Get in touch</a>
-                      </Button>
-                    </div>
                   </AccordionContent>
                 </AccordionItem>
               </motion.div>

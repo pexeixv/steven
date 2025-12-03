@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 
 const tools = [
+  'Studio One',
   'FL Studio',
   'Ableton',
   'Pro Tools',
@@ -14,6 +15,8 @@ const tools = [
   'UAD',
   'Native Instruments',
 ]
+
+const instruments = ['Keyboard', 'Guitar']
 
 const workflowSteps = ['Receive session', 'Organize', 'Mix', 'Review', 'Master', 'Deliver']
 
@@ -78,6 +81,27 @@ export function WorkflowSection() {
                       className="border-sky-500/30 text-sky-400 hover:bg-sky-500/10 px-4 py-2 text-sm cursor-default"
                     >
                       {tool}
+                    </Badge>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold text-white mb-4">Instruments I play</h3>
+              <div className="flex flex-wrap gap-2">
+                {instruments.map((instrument, index) => (
+                  <motion.div
+                    key={instrument}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ duration: 0.3, delay: 0.3 + index * 0.05 }}
+                  >
+                    <Badge
+                      variant="outline"
+                      className="border-sky-500/30 text-sky-400 hover:bg-sky-500/10 px-4 py-2 text-sm cursor-default"
+                    >
+                      {instrument}
                     </Badge>
                   </motion.div>
                 ))}

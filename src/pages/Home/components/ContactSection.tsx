@@ -7,7 +7,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Card } from '@/components/ui/card'
-import { Calendar, Send } from 'lucide-react'
+import { Send } from 'lucide-react'
 
 export function ContactSection() {
   const ref = useRef(null)
@@ -147,14 +147,6 @@ export function ContactSection() {
                 >
                   <Send className="w-4 h-4 mr-2" />
                   Send message
-                </Button>
-                <Button
-                  type="button"
-                  variant="outline"
-                  className="flex-1 border-sky-500 text-sky-400 hover:bg-sky-500/10 rounded-full"
-                >
-                  <Calendar className="w-4 h-4 mr-2" />
-                  Request quote
                 </Button>
               </div>
             </form>
