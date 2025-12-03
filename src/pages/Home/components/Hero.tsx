@@ -10,8 +10,8 @@ export function Hero() {
 
       <div className="absolute inset-0 bg-gradient-radial from-transparent via-neutral-900/50 to-neutral-900"></div>
 
-      <div className="lg:mx-auto max-lg:ml-auto lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 lg:mx-auto max-lg:ml-auto lg:px-8">
+        <div className="grid items-center gap-12 lg:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -20,7 +20,7 @@ export function Hero() {
           >
             <div className="relative ">
               <svg
-                className="absolute -left-4 -top-8 w-64 h-24 opacity-10"
+                className="absolute w-64 h-24 -left-4 -top-8 opacity-10"
                 viewBox="0 0 256 96"
                 fill="none"
               >
@@ -37,7 +37,7 @@ export function Hero() {
                 ))}
               </svg>
 
-              <h1 className="text-3xl lg:text-5xl xl:text-6xl font-black text-white leading-tight">
+              <h1 className="text-3xl font-black leading-tight text-white lg:text-5xl xl:text-6xl">
                 Sound that breathes. <span className="text-sky-500">Stories that move.</span>
               </h1>
             </div>
@@ -50,7 +50,7 @@ export function Hero() {
               <Button
                 asChild
                 size="lg"
-                className="bg-sky-500 hover:bg-sky-600 text-white rounded-full px-8"
+                className="text-white rounded-full bg-sky-500 hover:bg-sky-600"
               >
                 <a href="#work-with-me">Work with me</a>
               </Button>
@@ -58,9 +58,9 @@ export function Hero() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-sky-500 hover:text-sky-500 text-sky-400 rounded-full px-8 hover:bg-white/90"
+                className="rounded-full border-sky-500 hover:text-sky-500 text-sky-400 hover:bg-white/90"
               >
-                <a href="#music" className="flex items-center gap-2">
+                <a href="#work" className="flex items-center gap-2">
                   <Play className="w-4 h-4" />
                   Listen
                 </a>
@@ -82,18 +82,18 @@ export function Hero() {
                 }}
               >
                 <div
-                  className="w-full h-full  bg-gradient-to-br from-neutral-800 to-neutral-900 flex items-end justify-end bg-contain bg-bottom bg-no-repeat"
+                  className="flex items-end justify-end w-full h-full bg-bottom bg-no-repeat bg-contain bg-gradient-to-br from-neutral-800 to-neutral-900"
                   style={{ backgroundImage: `url(${HeroImage})` }}
                 ></div>
               </div>
 
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-transparent to-transparent opacity-60"></div>
-              <div className="absolute h-full top-0 right-0 bg-gradient-to-r from-transparent to-neutral-900 w-24 "></div>
+              <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-r from-transparent to-neutral-900 "></div>
 
               {[...Array(20)].map((_, i) => (
                 <motion.div
                   key={i}
-                  className="absolute w-1 h-1 bg-sky-400/40 rounded-full"
+                  className="absolute w-1 h-1 rounded-full bg-sky-400/40"
                   style={{
                     left: `${Math.random() * 100}%`,
                     top: `${Math.random() * 100}%`,

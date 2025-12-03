@@ -25,24 +25,26 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 left-0  w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-neutral-900/90 backdrop-blur-md border-sky-500/10' : 'bg-transparent'
+        scrolled
+          ? 'bg-neutral-900/90 backdrop-blur-md border-b border-sky-500/50'
+          : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-4 lg:px-8">
+      <div className="container px-4 mx-auto lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex flex-col">
             <a href="#home" className="text-xl font-bold tracking-wide text-white">
-              <Logo className="w-8 h-8 inline-block mr-2 mb-1" />
+              <Logo className="inline-block w-8 h-8 mb-1 mr-2" />
               <span> Steven Pereira</span>
             </a>
           </div>
 
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="items-center hidden gap-8 lg:flex">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-gray-300 hover:text-sky-400 transition-colors"
+                className="text-sm text-gray-300 transition-colors hover:text-sky-400"
               >
                 {link.label}
               </a>
@@ -52,7 +54,7 @@ export function Header() {
           <div className="flex items-center gap-4">
             <Button
               asChild
-              className="hidden lg:inline-flex bg-sky-500 hover:bg-sky-600 text-white rounded-full"
+              className="hidden text-white rounded-full lg:inline-flex bg-sky-500 hover:bg-sky-600"
             >
               <a href="#work-with-me">Work with me</a>
             </Button>
@@ -72,18 +74,18 @@ const HamburgerMenu = () => {
           <Menu className="size-5" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="bg-neutral-900 border-sky-500/20 px-8">
+      <SheetContent side="right" className="px-8 bg-neutral-900 border-sky-500/20">
         <nav className="flex flex-col gap-6 mt-8">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-lg text-gray-300 hover:text-sky-400 transition-colors"
+              className="text-lg text-gray-300 transition-colors hover:text-sky-400"
             >
               {link.label}
             </a>
           ))}
-          <Button asChild className="bg-sky-500 hover:bg-sky-600 text-white rounded-full mt-4">
+          <Button asChild className="mt-4 text-white rounded-full bg-sky-500 hover:bg-sky-600">
             <a href="#work-with-me">Work with me</a>
           </Button>
         </nav>
