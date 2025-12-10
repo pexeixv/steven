@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
-import { Ham, Menu, MenuIcon } from 'lucide-react'
+import { MenuIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Sheet, SheetClose, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import Logo from '@/assets/logo.svg?react'
 import ContactForm from './ContactForm'
+import { cn } from '@/lib/utils'
+import WorkDialog from './WorkDialog'
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -25,11 +27,12 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0  w-full z-50 transition-all duration-300 ${
+      className={cn(
+        'fixed top-0 left-0 w-full z-50 transition-all duration-300',
         scrolled
           ? 'bg-neutral-900/90 backdrop-blur-md border-b border-sky-500/50'
           : 'bg-transparent'
-      }`}
+      )}
     >
       <div className="container px-4 mx-auto lg:px-8">
         <div className="flex items-center justify-between h-20">
@@ -53,6 +56,7 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-4">
+            <WorkDialog />
             <ContactForm />
             <HamburgerMenu />
           </div>
@@ -67,7 +71,7 @@ const HamburgerMenu = () => {
     <Sheet>
       <SheetTrigger asChild className="lg:hidden">
         <Button variant="ghost" size="icon" className="text-white cursor-pointer">
-          <Menu className="size-5" />
+          <MenuIcon className="size-5" />
         </Button>
       </SheetTrigger>
       <SheetContent side="right" className="px-8 bg-neutral-900 border-sky-500/20">
@@ -81,6 +85,8 @@ const HamburgerMenu = () => {
               {link.label}
             </a>
           ))}
+          <WorkDialog />
+
           <ContactForm />
         </nav>
       </SheetContent>

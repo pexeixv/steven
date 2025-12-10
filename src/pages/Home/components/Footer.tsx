@@ -1,5 +1,6 @@
 import { Instagram, Music2, Youtube } from 'lucide-react'
 import ContactForm from './ContactForm'
+import WorkDialog from './WorkDialog'
 
 export function Footer() {
   return (
@@ -15,7 +16,7 @@ export function Footer() {
 
           <div>
             <h4 className="mb-4 text-sm font-semibold text-white">Quick Links</h4>
-            <nav className="flex flex-col gap-2">
+            <nav className="flex flex-col items-start gap-2">
               <a
                 href="#home"
                 className="text-sm text-gray-400 transition-colors hover:text-sky-400"
@@ -34,6 +35,7 @@ export function Footer() {
               >
                 Skillset
               </a>
+              <WorkDialog />
               <ContactForm />
             </nav>
           </div>

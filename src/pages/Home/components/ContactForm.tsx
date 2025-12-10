@@ -33,7 +33,10 @@ function ContactForm() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="text-white rounded-full cursor-pointer bg-sky-500 hover:bg-sky-600 w-fit">
+        <Button
+          variant="outline"
+          className="flex items-center gap-2 rounded-full cursor-pointer border-sky-500 hover:text-sky-500 text-sky-400 hover:bg-white/90"
+        >
           Work with me
         </Button>
       </DialogTrigger>

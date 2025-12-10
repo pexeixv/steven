@@ -1,8 +1,7 @@
-import { Play } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
 import HeroImage from '@/assets/hero.png'
 import ContactForm from './ContactForm'
+import WorkDialog from './WorkDialog'
 
 export function Hero() {
   return (
@@ -48,18 +47,8 @@ export function Hero() {
             </p>
 
             <div className="flex flex-wrap gap-4 pt-4">
+              <WorkDialog />
               <ContactForm />
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="rounded-full border-sky-500 hover:text-sky-500 text-sky-400 hover:bg-white/90"
-              >
-                <a href="#work" className="flex items-center gap-2">
-                  <Play className="w-4 h-4" />
-                  Listen
-                </a>
-              </Button>
             </div>
           </motion.div>
 
