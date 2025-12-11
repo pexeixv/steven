@@ -19,7 +19,7 @@ async function render(pageContext: PageContextServer) {
   )
 
   // Get helmet data after rendering
-  const { helmet } = helmetContext as any
+  const { helmet } = helmetContext as { helmet?: { title: { toString: () => string }; meta: { toString: () => string }; link: { toString: () => string } } }
 
   const documentProps = pageContext.documentProps || {}
   const title = documentProps.title || 'Steven Pereira'

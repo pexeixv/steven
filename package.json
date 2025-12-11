@@ -7,7 +7,6 @@
     "dev": "node server/index.js",
     "dev:spa": "vite",
     "build": "vite build",
-    "build:ssr": "vite build && vite build --ssr",
     "preview": "cross-env NODE_ENV=production node server/index.js",
     "lint": "eslint .",
     "format": "prettier --write ."
