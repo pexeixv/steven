@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-import Home from '@/pages/Home'
+import { Page as Home } from '@/pages/Home.page'
 import TwSizeIndicator from './components/TwSizeIndicator'
 import { ThemeProvider } from './components/ThemeProvider'
 
