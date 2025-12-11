@@ -5,13 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/prerender.cjs",
     "lint": "eslint .",
-    "preview": "vite preview",
+    "preview": "serve dist/client",
     "format": "prettier --write ."
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
+    "react-helmet-async": "^2.0.4",
+    "vite-plugin-ssr": "^0.4.142",
     "@radix-ui/react-accordion": "^1.2.10",
     "@radix-ui/react-alert-dialog": "^1.1.13",
     "@radix-ui/react-aspect-ratio": "^1.1.6",
@@ -65,6 +67,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
+    "serve": "^14.2.1",
     "@types/node": "^22.15.18",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
