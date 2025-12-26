@@ -56,8 +56,12 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-4">
-            <WorkDialog />
-            <ContactForm />
+            <div className="max-lg:hidden">
+              <WorkDialog />
+            </div>
+            <div className="max-lg:hidden">
+              <ContactForm />
+            </div>
             <HamburgerMenu />
           </div>
         </div>
