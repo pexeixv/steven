@@ -1,71 +1,163 @@
+import { useFormik } from 'formik'
+import * as yup from 'yup'
 import { useState } from 'react'
-import type { FormEvent } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { Checkbox } from '@/components/ui/checkbox'
-import { Send } from 'lucide-react'
+import { Send, CheckCircle2, AlertCircle } from 'lucide-react'
+
+const FORMS_URL = import.meta.env.VITE_FORMS_URL
+const FORMS_KEY = import.meta.env.VITE_FORMS_KEY
+
+const schema = yup.object({
+  name: yup.string().trim().required('Name is required'),
+  email: yup.string().trim().email('Enter a valid email address').required('Email is required'),
+  message: yup
+    .string()
+    .trim()
+    .min(10, 'Message must be at least 10 characters')
+    .required('Message is required'),
+  needMixing: yup.boolean(),
+  needMastering: yup.boolean(),
+  fullProduction: yup.boolean(),
+})
 
 export function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-    needMixing: false,
-    needMastering: false,
-    fullProduction: false,
+  const [startedAt] = useState(Date.now())
+  const [isSuccess, setIsSuccess] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
+
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      message: '',
+      company: '', // honeypot
+      needMixing: false,
+      needMastering: false,
+      fullProduction: false,
+    },
+    validationSchema: schema,
+    validateOnChange: true,
+    validateOnBlur: true,
+    onSubmit: async (values) => {
+      setSubmitError(null)
+
+      const services =
+        [
+          values.needMixing && 'Mixing',
+          values.needMastering && 'Mastering',
+          values.fullProduction && 'Full Production',
+        ]
+          .filter(Boolean)
+          .join(', ') || 'None selected'
+
+      try {
+        const res = await fetch(`${FORMS_URL}/submit`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': FORMS_KEY,
+          },
+          body: JSON.stringify({
+            data: {
+              name: values.name,
+              email: values.email,
+              message: values.message,
+              company: values.company,
+              services,
+            },
+            meta: { startedAt },
+          }),
+        })
+
+        const result = await res.json()
+
+        if (!res.ok) {
+          setSubmitError(result.error || 'Something went wrong. Please try again.')
+          return
+        }
+
+        if (result.success) {
+          setIsSuccess(true)
+        } else {
+          setSubmitError(result.error || 'Something went wrong. Please try again.')
+        }
+      } catch {
+        setSubmitError('Network error. Please check your connection and try again.')
+      }
+    },
   })
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault()
+  // Helper: show error only when field is touched AND has an error
+  const fieldError = (name: 'name' | 'email' | 'message') =>
+    formik.touched[name] && formik.errors[name] ? formik.errors[name] : null
 
-    // Backend integration goes here later
-    console.log('Form submitted:', formData)
+  if (isSuccess) {
+    return (
+      <div className="flex flex-col items-center gap-4 py-12 text-center">
+        <CheckCircle2 className="size-12 text-brand-500" />
+        <h3 className="text-xl font-semibold text-white">Message sent!</h3>
+        <p className="text-gray-400">Thanks for reaching out. I'll get back to you soon.</p>
+      </div>
+    )
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={formik.handleSubmit} className="space-y-6">
+      {/* Honeypot — hidden from real users */}
+      <input
+        type="text"
+        name="company"
+        value={formik.values.company}
+        onChange={formik.handleChange}
+        className="hidden"
+        tabIndex={-1}
+        autoComplete="off"
+      />
+
       <div className="grid gap-6 md:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="name" className="text-white">
             Name
           </Label>
-
           <Input
             id="name"
-            value={formData.name}
-            onChange={(e) =>
-              setFormData((prev) => ({
-                ...prev,
-                name: e.target.value,
-              }))
-            }
-            className="text-white bg-neutral-800 border-brand-500/20 focus:border-brand-500"
+            name="name"
+            value={formik.values.name}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            className={`text-white bg-neutral-800 border-brand-500/20 focus:border-brand-500 ${fieldError('name') ? 'border-red-500 focus:border-red-500' : ''}`}
             placeholder="Your name"
-            required
           />
+          {fieldError('name') && (
+            <p className="flex items-center gap-1 text-xs text-red-400">
+              <AlertCircle className="size-3" /> {fieldError('name')}
+            </p>
+          )}
         </div>
 
         <div className="space-y-2">
           <Label htmlFor="email" className="text-white">
             Email
           </Label>
-
           <Input
             id="email"
+            name="email"
             type="email"
-            value={formData.email}
-            onChange={(e) =>
-              setFormData((prev) => ({
-                ...prev,
-                email: e.target.value,
-              }))
-            }
-            className="text-white bg-neutral-800 border-brand-500/20 focus:border-brand-500"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            className={`text-white bg-neutral-800 border-brand-500/20 focus:border-brand-500 ${fieldError('email') ? 'border-red-500 focus:border-red-500' : ''}`}
             placeholder="your@email.com"
-            required
           />
+          {fieldError('email') && (
+            <p className="flex items-center gap-1 text-xs text-red-400">
+              <AlertCircle className="size-3" /> {fieldError('email')}
+            </p>
+          )}
         </div>
       </div>
 
@@ -73,89 +165,60 @@ export function ContactForm() {
         <Label htmlFor="message" className="text-white">
           Tell me about your project
         </Label>
-
         <Textarea
           id="message"
-          value={formData.message}
-          onChange={(e) =>
-            setFormData((prev) => ({
-              ...prev,
-              message: e.target.value,
-            }))
-          }
-          className="text-white bg-neutral-800 border-brand-500/20 focus:border-brand-500 min-h-32"
+          name="message"
+          value={formik.values.message}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          className={`text-white bg-neutral-800 border-brand-500/20 focus:border-brand-500 min-h-32 ${fieldError('message') ? 'border-red-500 focus:border-red-500' : ''}`}
           placeholder="Share your vision, reference tracks, or any specific requirements..."
-          required
         />
+        {fieldError('message') && (
+          <p className="flex items-center gap-1 text-xs text-red-400">
+            <AlertCircle className="size-3" /> {fieldError('message')}
+          </p>
+        )}
       </div>
 
       <div className="space-y-3">
         <Label className="text-white">What do you need?</Label>
-
         <div className="flex flex-wrap gap-3">
-          <div className="flex items-center space-x-2">
-            <Checkbox
-              id="mixing"
-              checked={formData.needMixing}
-              onCheckedChange={(checked) =>
-                setFormData((prev) => ({
-                  ...prev,
-                  needMixing: checked as boolean,
-                }))
-              }
-              className="border-brand-500/50 data-[state=checked]:bg-brand-500"
-            />
-
-            <Label htmlFor="mixing" className="text-sm text-gray-300 cursor-pointer">
-              Mixing
-            </Label>
-          </div>
-
-          <div className="flex items-center space-x-2">
-            <Checkbox
-              id="mastering"
-              checked={formData.needMastering}
-              onCheckedChange={(checked) =>
-                setFormData((prev) => ({
-                  ...prev,
-                  needMastering: checked as boolean,
-                }))
-              }
-              className="border-brand-500/50 data-[state=checked]:bg-brand-500"
-            />
-
-            <Label htmlFor="mastering" className="text-sm text-gray-300 cursor-pointer">
-              Mastering
-            </Label>
-          </div>
-
-          <div className="flex items-center space-x-2">
-            <Checkbox
-              id="production"
-              checked={formData.fullProduction}
-              onCheckedChange={(checked) =>
-                setFormData((prev) => ({
-                  ...prev,
-                  fullProduction: checked as boolean,
-                }))
-              }
-              className="border-brand-500/50 data-[state=checked]:bg-brand-500"
-            />
-
-            <Label htmlFor="production" className="text-sm text-gray-300 cursor-pointer">
-              Full production
-            </Label>
-          </div>
+          {[
+            { id: 'mixing', key: 'needMixing', label: 'Mixing' },
+            { id: 'mastering', key: 'needMastering', label: 'Mastering' },
+            { id: 'production', key: 'fullProduction', label: 'Full production' },
+          ].map(({ id, key, label }) => (
+            <div key={id} className="flex items-center space-x-2">
+              <Checkbox
+                id={id}
+                checked={formik.values[key as keyof typeof formik.values] as boolean}
+                onCheckedChange={(checked) => formik.setFieldValue(key, checked)}
+                className="border-brand-500/50 data-[state=checked]:bg-brand-500"
+              />
+              <Label htmlFor={id} className="text-sm text-gray-300 cursor-pointer">
+                {label}
+              </Label>
+            </div>
+          ))}
         </div>
       </div>
+
+      {submitError && (
+        <div className="flex items-center gap-2 px-4 py-3 text-sm text-red-400 border rounded-lg border-red-500/20 bg-red-500/10">
+          <AlertCircle className="size-4 shrink-0" />
+          {submitError}
+        </div>
+      )}
 
       <div className="flex flex-col gap-4 pt-4 sm:flex-row">
         <Button
           type="submit"
-          className="flex-1 text-white rounded-full cursor-pointer bg-brand-500 hover:bg-brand-600"
+          disabled={formik.isSubmitting}
+          className="flex-1 text-white rounded-full cursor-pointer bg-brand-500 hover:bg-brand-600 disabled:opacity-60 disabled:cursor-not-allowed"
         >
           <Send className="size-4" />
-          Send message
+          {formik.isSubmitting ? 'Sending…' : 'Send message'}
         </Button>
       </div>
     </form>
