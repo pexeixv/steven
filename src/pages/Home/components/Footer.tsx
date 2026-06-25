@@ -65,14 +65,6 @@ export function Footer() {
                 <Youtube className="w-4 h-4 text-brand-400" />
               </a>
             </div>
-            <p className="mt-4 text-sm text-gray-400">
-              <a
-                href="mailto:lunaphaseaudio@gmail.com"
-                className="transition-colors hover:text-brand-400"
-              >
-                lunaphaseaudio@gmail.com
-              </a>
-            </p>
           </div>
         </div>
 
