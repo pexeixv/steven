@@ -110,6 +110,21 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@theme {
+  --color-brand-50: oklch(0.958 0.019 33.43);
+  --color-brand-100: oklch(0.927 0.036 34.84);
+  --color-brand-200: oklch(0.846 0.083 37.3);
+  --color-brand-300: oklch(0.772 0.134 41.02);
+  --color-brand-400: oklch(0.697 0.179 47.45);
+  --color-brand-500: oklch(0.601 0.155 47.26);
+  --color-brand-600: oklch(0.513 0.132 47.55);
+  --color-brand-700: oklch(0.417 0.107 47.56);
+  --color-brand-800: oklch(0.327 0.084 47.35);
+  --color-brand-900: oklch(0.229 0.059 46.93);
+  --color-brand-950: oklch(0.182 0.047 46.95);
+  --color-brand-background: oklch(0.2442 0.0064 0.59);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

@@ -8,7 +8,7 @@ export function WorkGallery() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="work" className="relative py-16 bg-black/20">
+    <section id="work" className="relative py-16 bg-brand-background/20">
       <div className="container px-4 mx-auto lg:px-8" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -17,7 +17,7 @@ export function WorkGallery() {
           className="mb-16 text-center"
         >
           <h2 className="mb-4 text-4xl font-bold text-white lg:text-5xl">
-            Take a look at my <span className="text-sky-500">work</span>
+            Take a look at my <span className="text-brand-500">work</span>
           </h2>
         </motion.div>
 

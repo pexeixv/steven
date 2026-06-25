@@ -45,7 +45,7 @@ export function FAQSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-            Any <span className="text-sky-500">questions?</span>
+            Any <span className="text-brand-500">questions?</span>
           </h2>
         </motion.div>
 
@@ -64,9 +64,9 @@ export function FAQSection() {
               >
                 <AccordionItem
                   value={`item-${index}`}
-                  className="bg-neutral-800/50 backdrop-blur-sm border border-sky-500/20 rounded-2xl px-6 hover:bg-neutral-800/70 transition-colors"
+                  className="bg-neutral-800/50 backdrop-blur-sm border border-brand-500/20 rounded-2xl px-6 hover:bg-neutral-800/70 transition-colors"
                 >
-                  <AccordionTrigger className="text-left text-white hover:text-sky-400 py-6 hover:no-underline">
+                  <AccordionTrigger className="text-left text-white hover:text-brand-400 py-6 hover:no-underline">
                     {faq.question}
                   </AccordionTrigger>
                   <AccordionContent className="text-gray-400 pb-6 leading-relaxed">

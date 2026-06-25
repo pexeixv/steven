@@ -268,7 +268,7 @@ const WetDryPlayer = () => {
             <button
               onClick={togglePlay}
               disabled={isLoading}
-              className="p-6 transition-all duration-300 transform rounded-full shadow-lg cursor-pointer bg-gradient-to-r from-blue-500 to-sky-500 hover:from-sky-5600 hover:to-blue-500 disabled:opacity-50 hover:scale-105"
+              className="p-6 transition-all duration-300 transform rounded-full shadow-lg cursor-pointer bg-gradient-to-r from-amber-500 to-brand-500 hover:from-amber-600 hover:to-brand-600 disabled:opacity-50 hover:scale-105"
             >
               {isPlaying ? (
                 <Pause className="text-white size-8" />

@@ -32,13 +32,13 @@ export function Hero() {
                     width="6"
                     height={Math.random() * 40 + 10}
                     fill="currentColor"
-                    className="text-sky-500"
+                    className="text-brand-500"
                   />
                 ))}
               </svg>
 
               <h1 className="text-4xl font-black leading-tight text-white lg:text-5xl xl:text-6xl">
-                Sound that breathes. <span className="text-sky-500">Stories that move.</span>
+                Sound that breathes. <span className="text-brand-500">Stories that move.</span>
               </h1>
             </div>
 
@@ -60,7 +60,7 @@ export function Hero() {
           >
             <div className="relative aspect-[4/5] overflow-hidden max-lg:max-h-[500px] max-lg:ml-auto">
               <div
-                className="absolute inset-0 bg-gradient-to-br from-sky-500/20 to-transparent "
+                className="absolute inset-0 bg-gradient-to-br from-brand-500/20 to-transparent "
                 style={{
                   clipPath: 'polygon(15% 0, 100% 0, 100% 100%, 0 100%)',
                 }}
@@ -77,7 +77,7 @@ export function Hero() {
               {[...Array(20)].map((_, i) => (
                 <motion.div
                   key={i}
-                  className="absolute w-1 h-1 rounded-full bg-sky-400/40"
+                  className="absolute w-1 h-1 rounded-full bg-brand-400/40"
                   style={{
                     left: `${Math.random() * 100}%`,
                     top: `${Math.random() * 100}%`,

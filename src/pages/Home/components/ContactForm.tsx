@@ -35,7 +35,7 @@ function ContactForm() {
       <DialogTrigger asChild>
         <Button
           variant="outline"
-          className="flex items-center gap-2 rounded-full cursor-pointer border-sky-500 hover:text-sky-500 text-sky-400 hover:bg-white/90"
+          className="flex items-center gap-2 rounded-full cursor-pointer border-brand-500 hover:text-brand-500 text-brand-400 hover:bg-white/90"
         >
           Work with me
         </Button>
@@ -44,14 +44,14 @@ function ContactForm() {
         <DialogHeader>
           <DialogTitle>
             <h2 className="text-4xl font-bold text-white lg:text-5xl">
-              Work with <span className="text-sky-500">me</span>
+              Work with <span className="text-brand-500">me</span>
             </h2>
           </DialogTitle>
           <DialogDescription asChild>
             <p className="text-lg text-gray-400">Let's create something amazing together</p>
           </DialogDescription>
         </DialogHeader>
-        <Card className="p-8 bg-neutral-900/50 backdrop-blur-sm border-sky-500/20 rounded-2xl">
+        <Card className="p-8 bg-neutral-900/50 backdrop-blur-sm border-brand-500/20 rounded-2xl">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid gap-6 md:grid-cols-2">
               <div className="space-y-2">
@@ -62,7 +62,7 @@ function ContactForm() {
                   id="name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="text-white bg-neutral-800 border-sky-500/20 focus:border-sky-500"
+                  className="text-white bg-neutral-800 border-brand-500/20 focus:border-brand-500"
                   placeholder="Your name"
                   required
                 />
@@ -77,7 +77,7 @@ function ContactForm() {
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="text-white bg-neutral-800 border-sky-500/20 focus:border-sky-500"
+                  className="text-white bg-neutral-800 border-brand-500/20 focus:border-brand-500"
                   placeholder="your@email.com"
                   required
                 />
@@ -92,7 +92,7 @@ function ContactForm() {
                 id="message"
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="text-white bg-neutral-800 border-sky-500/20 focus:border-sky-500 min-h-32"
+                className="text-white bg-neutral-800 border-brand-500/20 focus:border-brand-500 min-h-32"
                 placeholder="Share your vision, reference tracks, or any specific requirements..."
                 required
               />
@@ -108,7 +108,7 @@ function ContactForm() {
                     onCheckedChange={(checked) =>
                       setFormData({ ...formData, needMixing: checked as boolean })
                     }
-                    className="border-sky-500/50 data-[state=checked]:bg-sky-500"
+                    className="border-brand-500/50 data-[state=checked]:bg-brand-500"
                   />
                   <Label htmlFor="mixing" className="text-sm text-gray-300 cursor-pointer">
                     Mixing
@@ -122,7 +122,7 @@ function ContactForm() {
                     onCheckedChange={(checked) =>
                       setFormData({ ...formData, needMastering: checked as boolean })
                     }
-                    className="border-sky-500/50 data-[state=checked]:bg-sky-500"
+                    className="border-brand-500/50 data-[state=checked]:bg-brand-500"
                   />
                   <Label htmlFor="mastering" className="text-sm text-gray-300 cursor-pointer">
                     Mastering
@@ -136,7 +136,7 @@ function ContactForm() {
                     onCheckedChange={(checked) =>
                       setFormData({ ...formData, fullProduction: checked as boolean })
                     }
-                    className="border-sky-500/50 data-[state=checked]:bg-sky-500"
+                    className="border-brand-500/50 data-[state=checked]:bg-brand-500"
                   />
                   <Label htmlFor="production" className="text-sm text-gray-300 cursor-pointer">
                     Full production
@@ -148,7 +148,7 @@ function ContactForm() {
             <div className="flex flex-col gap-4 pt-4 sm:flex-row">
               <Button
                 type="submit"
-                className="flex-1 text-white rounded-full cursor-pointer bg-sky-500 hover:bg-sky-600"
+                className="flex-1 text-white rounded-full cursor-pointer bg-brand-500 hover:bg-brand-600"
               >
                 <Send className="size-4" />
                 Send message
