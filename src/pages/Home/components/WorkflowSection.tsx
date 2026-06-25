@@ -46,7 +46,7 @@ export function WorkflowSection() {
           className="mb-16 text-center"
         >
           <h2 className="mb-4 text-4xl font-bold text-white lg:text-5xl">
-            Workflows & <span className="text-sky-500">Tools</span>
+            Workflows & <span className="text-brand-500">Tools</span>
           </h2>
         </motion.div>
 
@@ -69,7 +69,7 @@ export function WorkflowSection() {
                   >
                     <Badge
                       variant="outline"
-                      className="px-4 py-2 text-sm cursor-default border-sky-500/30 text-sky-400 hover:bg-sky-500/10"
+                      className="px-4 py-2 text-sm cursor-default border-brand-500/30 text-brand-400 hover:bg-brand-500/10"
                     >
                       {tool}
                     </Badge>
@@ -90,7 +90,7 @@ export function WorkflowSection() {
                   >
                     <Badge
                       variant="outline"
-                      className="px-4 py-2 text-sm cursor-default border-sky-500/30 text-sky-400 hover:bg-sky-500/10"
+                      className="px-4 py-2 text-sm cursor-default border-brand-500/30 text-brand-400 hover:bg-brand-500/10"
                     >
                       {instrument}
                     </Badge>
@@ -110,7 +110,7 @@ export function WorkflowSection() {
                     transition={{ duration: 0.4, delay: 0.4 + index * 0.08 }}
                     className="flex items-center gap-2 whitespace-nowrap"
                   >
-                    <Badge className="flex items-center justify-center flex-shrink-0 w-8 h-8 text-xs font-semibold border rounded-full bg-sky-500/20 border-sky-500/40 text-sky-400">
+                    <Badge className="flex items-center justify-center flex-shrink-0 w-8 h-8 text-xs font-semibold border rounded-full bg-brand-500/20 border-brand-500/40 text-brand-400">
                       {index + 1}
                     </Badge>
                     <span className="text-sm text-gray-300">{step}</span>
@@ -135,10 +135,10 @@ export function WorkflowSection() {
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.45, delay: 0.5 + index * 0.1 }}
                 >
-                  <Card className="p-6 bg-neutral-800/50 backdrop-blur-sm border-sky-500/20 rounded-2xl">
+                  <Card className="p-6 bg-neutral-800/50 backdrop-blur-sm border-brand-500/20 rounded-2xl">
                     <div className="flex items-start gap-4">
-                      <div className="flex items-center justify-center flex-shrink-0 rounded-full w-11 h-11 bg-sky-500/10">
-                        <Icon className="w-5 h-5 text-sky-400" />
+                      <div className="flex items-center justify-center flex-shrink-0 rounded-full w-11 h-11 bg-brand-500/10">
+                        <Icon className="w-5 h-5 text-brand-400" />
                       </div>
                       <div>
                         <h4 className="mb-2 text-lg font-semibold text-white">{principle.title}</h4>

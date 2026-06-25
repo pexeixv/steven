@@ -32,7 +32,7 @@ export function SkillsetSection() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="skillset" className="relative py-16 bg-black/20">
+    <section id="skillset" className="relative py-16 bg-brand-background/20">
       <div className="container px-4 mx-auto lg:px-8" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -41,7 +41,7 @@ export function SkillsetSection() {
           className="mb-16 text-center"
         >
           <h2 className="mb-4 text-4xl font-bold text-white lg:text-5xl">
-            What can I <span className="text-sky-500">do?</span>
+            What can I <span className="text-brand-500">do?</span>
           </h2>
         </motion.div>
 
@@ -55,13 +55,13 @@ export function SkillsetSection() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.45, delay: index * 0.06 }}
               >
-                <Card className="h-full p-6 transition-all duration-300 bg-neutral-900/50 backdrop-blur-sm border-sky-500/20 rounded-2xl hover:bg-neutral-900/70 hover:-translate-y-1 group">
+                <Card className="h-full p-6 transition-all duration-300 bg-neutral-900/50 backdrop-blur-sm border-brand-500/20 rounded-2xl hover:bg-neutral-900/70 hover:-translate-y-1 group">
                   <div className="flex items-start gap-4">
-                    <div className="flex items-center justify-center flex-shrink-0 transition-colors rounded-full w-11 h-11 bg-sky-500/10 group-hover:bg-sky-500/20">
-                      <Icon className="w-5 h-5 text-sky-400" />
+                    <div className="flex items-center justify-center flex-shrink-0 transition-colors rounded-full w-11 h-11 bg-brand-500/10 group-hover:bg-brand-500/20">
+                      <Icon className="w-5 h-5 text-brand-400" />
                     </div>
                     <div>
-                      <h3 className="mb-2 text-lg font-semibold text-white transition-colors group-hover:text-sky-400">
+                      <h3 className="mb-2 text-lg font-semibold text-white transition-colors group-hover:text-brand-400">
                         {feature.title}
                       </h3>
                       <p className="text-sm text-gray-400">{feature.description}</p>
@@ -82,7 +82,7 @@ export function SkillsetSection() {
           <p className="font-bold text-white lg:text-lg lg:text-right">
             <span className="text-lg">+</span> <br className="lg:hidden" /> I can cook.{' '}
             <br className="lg:hidden" /> I can clean. <br className="lg:hidden" />
-            <span className="text-sky-500">I can create an experience.</span>
+            <span className="text-brand-500">I can create an experience.</span>
           </p>
         </motion.div>
       </div>

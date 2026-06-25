@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react'
 import { MenuIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import Logo from '@/assets/logo.svg?react'
-import ContactForm from './ContactForm'
+import Logo from '@/assets/sp_logo_orange.svg?react'
 import { cn } from '@/lib/utils'
 import WorkDialog from './WorkDialog'
+import { ContactDialog } from './ContactDialog'
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -30,7 +30,7 @@ export function Header() {
       className={cn(
         'fixed top-0 left-0 w-full z-50 transition-all duration-300',
         scrolled
-          ? 'bg-neutral-900/90 backdrop-blur-md border-b border-sky-500/50'
+          ? 'bg-neutral-900/90 backdrop-blur-md border-b border-brand-500/50'
           : 'bg-transparent'
       )}
     >
@@ -48,7 +48,7 @@ export function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-gray-300 transition-colors hover:text-sky-400"
+                className="text-sm text-gray-300 transition-colors hover:text-brand-400"
               >
                 {link.label}
               </a>
@@ -60,7 +60,7 @@ export function Header() {
               <WorkDialog />
             </div>
             <div className="max-lg:hidden">
-              <ContactForm />
+              <ContactDialog />
             </div>
             <HamburgerMenu />
           </div>
@@ -78,20 +78,20 @@ const HamburgerMenu = () => {
           <MenuIcon className="size-5" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="px-8 bg-neutral-900 border-sky-500/20">
+      <SheetContent side="right" className="px-8 bg-neutral-900 border-brand-500/20">
         <nav className="flex flex-col gap-6 mt-8">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-lg text-gray-300 transition-colors hover:text-sky-400"
+              className="text-lg text-gray-300 transition-colors hover:text-brand-400"
             >
               {link.label}
             </a>
           ))}
           <WorkDialog />
 
-          <ContactForm />
+          <ContactDialog />
         </nav>
       </SheetContent>
     </Sheet>
