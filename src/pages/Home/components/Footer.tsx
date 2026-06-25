@@ -66,8 +66,11 @@ export function Footer() {
               </a>
             </div>
             <p className="mt-4 text-sm text-gray-400">
-              <a href="mailto:steven@email.com" className="transition-colors hover:text-brand-400">
-                steven@email.com
+              <a
+                href="mailto:lunaphaseaudio@gmail.com"
+                className="transition-colors hover:text-brand-400"
+              >
+                lunaphaseaudio@gmail.com
               </a>
             </p>
           </div>
