@@ -3,9 +3,9 @@ import { MenuIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import Logo from '@/assets/sp_logo_orange.svg?react'
-import ContactForm from './ContactForm'
 import { cn } from '@/lib/utils'
 import WorkDialog from './WorkDialog'
+import { ContactDialog } from './ContactDialog'
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -60,7 +60,7 @@ export function Header() {
               <WorkDialog />
             </div>
             <div className="max-lg:hidden">
-              <ContactForm />
+              <ContactDialog />
             </div>
             <HamburgerMenu />
           </div>
@@ -91,7 +91,7 @@ const HamburgerMenu = () => {
           ))}
           <WorkDialog />
 
-          <ContactForm />
+          <ContactDialog />
         </nav>
       </SheetContent>
     </Sheet>

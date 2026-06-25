@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import HeroImage from '@/assets/hero.png'
-import ContactForm from './ContactForm'
 import WorkDialog from './WorkDialog'
+import { ContactDialog } from './ContactDialog'
 
 export function Hero() {
   return (
@@ -48,7 +48,7 @@ export function Hero() {
 
             <div className="flex flex-wrap gap-4 pt-4">
               <WorkDialog />
-              <ContactForm />
+              <ContactDialog />
             </div>
           </motion.div>
 

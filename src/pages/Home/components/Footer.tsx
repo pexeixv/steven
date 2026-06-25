@@ -1,6 +1,6 @@
 import { Instagram, Music2, Youtube } from 'lucide-react'
-import ContactForm from './ContactForm'
 import WorkDialog from './WorkDialog'
+import { ContactDialog } from './ContactDialog'
 
 export function Footer() {
   return (
@@ -36,7 +36,7 @@ export function Footer() {
                 Skillset
               </a>
               <WorkDialog />
-              <ContactForm />
+              <ContactDialog />
             </nav>
           </div>
 
